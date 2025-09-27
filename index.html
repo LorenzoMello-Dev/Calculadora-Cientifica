@@ -1,0 +1,109 @@
+<!-- 
+    Calculadora Científica Web
+    Autor: Lorenzo Mello 
+    Año: 2025
+    Descripción: Una calculadora científica con funciones básicas, convertidor de divisas y calculadora de porcentajes
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Configuración del documento -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Enlaces a archivos externos -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    
+    <!-- Título de la página -->
+    <title>Calculadora Científica</title>
+</head>
+<body>
+    <h1 class="titulo">Calculadora</h1>
+
+    <!-- Contenedor principal de la calculadora -->
+    <div class="calculadora">
+        
+        <!-- Calculadora básica con display y botones numéricos -->
+        <div class="principal">
+            <input type="text" id="display" disabled>
+            
+            <div class="botones">
+                <!-- Controles de operación -->
+                <button onclick="limpiarDisplay()">C</button>
+                <button onclick="agregarOperador('(')">(</button>
+                <button onclick="agregarOperador(')')">)</button>
+                <button onclick="eliminarUltimoCaracter()">⌫</button>
+                <button onclick="agregarOperador('+')">+</button>
+                
+                <!-- Teclado numérico y operadores -->
+                <button onclick="agregarNumero('7')">7</button>
+                <button onclick="agregarNumero('8')">8</button>
+                <button onclick="agregarNumero('9')">9</button>
+                <button onclick="agregarOperador('-')">-</button>
+                <button onclick="agregarNumero('4')">4</button>
+                <button onclick="agregarNumero('5')">5</button>
+                <button onclick="agregarNumero('6')">6</button>
+                <button onclick="agregarOperador('x')">x</button>
+                <button onclick="agregarNumero('1')">1</button>
+                <button onclick="agregarNumero('2')">2</button>
+                <button onclick="agregarNumero('3')">3</button>
+                <button onclick="agregarOperador('/')">÷</button>
+                <button onclick="agregarNumero('0')">0</button>
+                <button onclick="agregarPunto()">.</button>
+                <button onclick="calcularResultado()">=</button>
+            </div>
+            
+            <!-- Acceso a funciones adicionales -->
+            <button onclick="abrirMenu('divisas')">Cambiar Divisas</button>
+            <button onclick="abrirMenu('porcentajes')">Calcular Porcentajes</button>
+        </div>
+        <!-- Módulo convertidor de divisas -->
+        <div class="secundaria" id="divisas" style="display:none;">
+            <h2>Convertidor de Divisas</h2>
+            <input type="number" id="cantidadDivisa" placeholder="Cantidad">
+            <select id="monedaOrigen">
+                <option value="USD">Dólar estadounidense (USD)</option>
+                <option value="MXN">Peso mexicano (MXN)</option>
+                <option value="BRL">Real brasileño (BRL)</option>
+                <option value="ARS">Peso argentino (ARS)</option>
+                <option value="COP">Peso colombiano (COP)</option>
+                <option value="CLP">Peso chileno (CLP)</option>
+                <option value="PEN">Sol peruano (PEN)</option>
+                <option value="VEF">Bolívar venezolano (VEF)</option>
+                <option value="UYU">Peso uruguayo (UYU)</option>
+                <option value="BOB">Boliviano (BOB)</option>
+            </select>
+            <select id="monedaDestino">
+                <option value="USD">Dólar estadounidense (USD)</option>
+                <option value="MXN">Peso mexicano (MXN)</option>
+                <option value="BRL">Real brasileño (BRL)</option>
+                <option value="ARS">Peso argentino (ARS)</option>
+                <option value="COP">Peso colombiano (COP)</option>
+                <option value="CLP">Peso chileno (CLP)</option>
+                <option value="PEN">Sol peruano (PEN)</option>
+                <option value="VEF">Bolívar venezolano (VEF)</option>
+                <option value="UYU">Peso uruguayo (UYU)</option>
+                <option value="BOB">Boliviano (BOB)</option>
+            </select>
+            <button onclick="convertirDivisa()">Convertir</button>
+            <p id="resultadoDivisa"></p>
+            <button onclick="cerrarMenu('divisas')">Cerrar</button>
+        </div>
+
+        <!-- Módulo calculadora de porcentajes -->
+        <div class="secundaria" id="porcentajes" style="display:none;">
+            <h2>Calculadora de Porcentajes</h2>
+            <input type="number" id="valorBase" placeholder="Valor Base">
+            <input type="number" id="porcentaje" placeholder="Porcentaje (%)">
+            <button onclick="calcularPorcentaje()">Calcular</button>
+            <p id="resultadoPorcentaje"></p>
+            <button onclick="cerrarMenu('porcentajes')">Cerrar</button>
+        </div>
+    </div>
+    
+    <script src="js/script.js"></script>
+    
+</body>
+</html>
